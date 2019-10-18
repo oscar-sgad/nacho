@@ -9,5 +9,11 @@ pipeline {
 
       }
     }
+    
+    stage('deploy'){
+      steps{
+        deploy adapters: [tomcat7(credentialsId: 'github', path: '', url: 'http://localhost:8082')], contextPath: 'web_curso', war: 'target\\*.war'
+      }
+    }
   }
 }
